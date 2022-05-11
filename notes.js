@@ -9,6 +9,8 @@ const addNote = (title, body) => {
   //const duplicateNotes = notes.filter((note) => note.title === title);
   const duplicateNote = notes.find((note) => note.title === title); //this version is more efficient because search stops when it finds a duplicate note, if we have 1000 notes, and a duplicate is found on 100th place, the upper method will keep searching other 900 notes for duplicate while find method will stop
 
+  //debugger; //if we want to debug we place debugger in certain code lines and then in chrome we navigate to chrome://inspect
+
   if (!duplicateNote) {
     notes.push({
       title: title,

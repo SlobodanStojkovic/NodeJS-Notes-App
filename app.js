@@ -67,4 +67,4 @@ yargs.command({
 });
 
 yargs.parse();
-//console.log(yargs.argv);
+//console.log(yargs.argv); without parse or console.log the code we wrote will not work as we expect
