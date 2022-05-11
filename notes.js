@@ -6,9 +6,10 @@ const getNotes = () => {
 
 const addNote = (title, body) => {
   const notes = loadNotes();
-  const duplicateNotes = notes.filter((note) => note.title === title);
+  //const duplicateNotes = notes.filter((note) => note.title === title);
+  const duplicateNote = notes.find((note) => note.title === title); //this version is more efficient because search stops when it finds a duplicate note, if we have 1000 notes, and a duplicate is found on 100th place, the upper method will keep searching other 900 notes for duplicate while find method will stop
 
-  if (duplicateNotes.length === 0) {
+  if (!duplicateNote) {
     notes.push({
       title: title,
       body: body,
@@ -56,9 +57,21 @@ const listNotes = () => {
   });
 };
 
+const readNote = (title) => {
+  const notes = loadNotes();
+  const noteToRead = notes.find((note) => note.title === title);
+  if (noteToRead) {
+    console.log(noteToRead.title);
+    console.log(noteToRead.body);
+  } else {
+    console.log("No note found");
+  }
+};
+
 module.exports = {
   getNotes: getNotes,
   addNote: addNote,
   removeNote: removeNote,
   listNotes: listNotes,
+  readNote: readNote,
 };
